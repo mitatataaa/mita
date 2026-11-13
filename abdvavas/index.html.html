@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For Elfino</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap');
+
+:root {
+    --bg: #eee8dc;
+    --paper: #faf7f0;
+    --brown: #594735;
+    --muted: #998875;
+    --line: #ded4c4;
+    --gold: #ae9167;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg);
+    color: var(--brown);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+}
+
+.screen {
+    display: none;
+    min-height: 100vh;
+    padding: 30px 22px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    animation: fade .9s ease;
+}
+
+.screen.active {
+    display: flex;
+}
+
+@keyframes fade {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.eyebrow {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 22px;
+}
+
+h1, h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+}
+
+h1 {
+    font-size: clamp(37px, 9vw, 57px);
+}
+
+h2 {
+    font-size: 29px;
+}
+
+p {
+    font-size: 13px;
+    line-height: 2;
+    color: var(--muted);
+}
+
+button {
+    background: var(--brown);
+    color: var(--paper);
+    border: none;
+    padding: 13px 25px;
+    font-family: inherit;
+    font-size: 11px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: .3s;
+    margin-top: 25px;
+}
+
+button:hover {
+    background: var(--gold);
+    transform: translateY(-2px);
+}
+
+button:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 4px;
+}
+
+/* PAGE 1 */
+
+.topline {
+    width: 100%;
+    max-width: 420px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 12px 0;
+    display: flex;
+    justify-content: space-between;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--muted);
+}
+
+.cover {
+    margin: 80px 0 35px;
+}
+
+.cover h1 {
+    line-height: 1.2;
+}
+
+.cover h1 span {
+    font-style: italic;
+}
+
+.envelope {
+    width: 230px;
+    height: 145px;
+    background: #d8c5a8;
+    position: relative;
+    margin: 0 auto;
+    cursor: pointer;
+    box-shadow: 0 15px 30px #75604418;
+    transition: .4s;
+}
+
+.envelope:hover {
+    transform: translateY(-7px);
+}
+
+.envelope::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #e8d8be;
+    clip-path: polygon(0 0, 50% 58%, 100% 0);
+    z-index: 2;
+}
+
+.envelope::after {
+    content: "E";
+    position: absolute;
+    top: 48px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 35px;
+    height: 35px;
+    display: grid;
+    place-items: center;
+    background: #876d4d;
+    color: white;
+    border-radius: 50%;
+    font-family: 'Playfair Display', serif;
+    z-index: 3;
+}
+
+.envelope-text {
+    position: absolute;
+    bottom: 12px;
+    width: 100%;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 14px;
+}
+
+.bottom-note {
+    margin-top: 65px;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--muted);
+}
+
+/* PAGE 2 */
+
+.letter {
+    background: var(--paper);
+    width: min(100%, 390px);
+    padding: 45px 30px;
+    text-align: left;
+    box-shadow: 0 12px 35px #6d57401a;
+    border: 1px solid #e8dfd0;
+}
+
+.letter .date {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    margin-bottom: 30px;
+}
+
+.letter h2 {
+    margin-bottom: 24px;
+}
+
+.letter-body {
+    font-size: 13px;
+    line-height: 2.2;
+    color: #786750;
+    white-space: pre-line;
+    min-height: 190px;
+}
+
+.signature {
+    margin-top: 25px;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 21px;
+}
+
+/* PAGE 3 */
+
+.cake-area {
+    margin: 35px 0 20px;
+    position: relative;
+}
+
+.cake {
+    font-size: 105px;
+    display: block;
+    animation: float 2.5s ease-in-out infinite;
+}
+
+@keyframes float {
+    50% { transform: translateY(-8px); }
+}
+
+.candles {
+    font-size: 27px;
+    letter-spacing: 8px;
+    margin-bottom: -8px;
+    position: relative;
+    z-index: 2;
+}
+
+.flame {
+    display: inline-block;
+    animation: flicker .7s infinite alternate;
+}
+
+@keyframes flicker {
+    to { transform: scale(1.18) rotate(5deg); }
+}
+
+.flame.off {
+    animation: none;
+    opacity: .2;
+}
+
+.wish {
+    margin-top: 15px;
+}
+
+/* PAGE 4 */
+
+.final-paper {
+    width: min(100%, 390px);
+    background: var(--paper);
+    padding: 40px 27px;
+    border: 1px solid var(--line);
+    box-shadow: 0 15px 35px #6d57401a;
+}
+
+.final-paper .big-heart {
+    font-size: 30px;
+    color: var(--gold);
+    margin-bottom: 20px;
+}
+
+.final-paper h1 {
+    font-size: 43px;
+    margin-bottom: 5px;
+}
+
+.final-paper h2 {
+    font-style: italic;
+    margin-bottom: 25px;
+}
+
+.final-paper p {
+    margin-bottom: 15px;
+}
+
+.secret {
+    display: none;
+    margin-top: 25px;
+    padding-top: 22px;
+    border-top: 1px solid var(--line);
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 17px;
+    line-height: 1.9;
+    animation: fade 1s;
+}
+
+/* MUSIC BUTTON */
+
+.music {
+    position: fixed;
+    bottom: 18px;
+    right: 18px;
+    background: var(--paper);
+    color: var(--brown);
+    border: 1px solid var(--line);
+    padding: 10px 14px;
+    font-size: 10px;
+    margin: 0;
+    z-index: 10;
+}
+
+.music.playing {
+    background: var(--brown);
+    color: white;
+}
+
+/* CONFETTI */
+
+.confetti {
+    position: fixed;
+    top: -20px;
+    z-index: 20;
+    pointer-events: none;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(500deg);
+        opacity: 0;
+    }
+}
+
+.footer {
+    margin-top: 35px;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--muted);
+}
+
+@media(max-width: 400px) {
+    .letter, .final-paper {
+        padding: 32px 22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- MUSIC -->
+<audio id="bgMusic" loop>
+    <source src="birthday.mp3" type="audio/mpeg">
+</audio>
+
+<button class="music" id="musicBtn" onclick="toggleMusic()">
+    ♫ MUSIC OFF
+</button>
+
+
+<!-- PAGE 1 -->
+
+<section class="screen active" id="page1">
+
+    <div class="topline">
+        <span>A LITTLE GIFT</span>
+        <span>01 / 04</span>
+    </div>
+
+    <div class="cover">
+        <div class="eyebrow">Happy Birthday</div>
+
+        <h2>ELfino Alrasya<br>
+        <p style="margin-top:20px">
+           written with love
+        </p>
+    </div>
+
+    <div class="envelope" onclick="openLetter()">
+        <div class="envelope-text">
+            A letter for my favorite person
+        </div>
+    </div>
+
+    <p style="margin-top:22px">
+        Klik amplopnya sayang
+    </p>
+
+    <div class="bottom-note">
+        With love, ♡ 
+    </div>
+
+</section>
+
+
+<!-- PAGE 2 -->
+
+<section class="screen" id="page2">
+
+    <div class="eyebrow">Secarik Surat Dariku, Untukmu.</div>
+
+    <div class="letter">
+
+        <div class="date">14 NOVEMBER</div>
+
+        <h2>Dear Kak Ell,</h2>
+
+        <div class="letter-body" id="letterText"></div>
+
+
+    </div>
+
+    <button onclick="goToPage(3)">
+        
+    </button>
+
+</section>
+
+
+<!-- PAGE 3 -->
+
+<section class="screen" id="page3">
+
+    <div class="eyebrow">Make a wish</div>
+
+    <h1>Yayyyy</h1>
+
+    <p style="margin-top:15px">
+        Semoga kamu selalu dikelilingi orang baik sayang
+    </p>
+
+    <div class="cake-area">
+
+        <div class="candles" id="candles">
+            <span class="flame">🕯️</span>
+            <span class="flame">🕯️</span>
+            <span class="flame">🕯️</span>
+        </div>
+
+        <span class="cake">🎂</span>
+
+    </div>
+
+    <p class="wish" id="wishText">
+        Don't forget to make a wish
+    </p>
+
+    <button id="blowBtn" onclick="blowCandles()">
+        Ayo tiup lilinnya! wkwk
+    </button>
+
+</section>
+
+
+<!-- PAGE 4 -->
+
+<section class="screen" id="page4">
+
+    <div class="eyebrow">And one last thing...</div>
+
+    <div class="final-paper">
+
+        <div class="big-heart">♡</div>
+
+        <h1>Happy Birthday Sayangku</h1>
+
+        <h2>Elfino Alrasya</h2>
+
+        <p>
+            Jangan terlalu keras sama diri sendiri ya sayang
+            kalo nanti ada hari yang berjalan ga sesuai harapan
+            jangan lupa besok masi ada kesempatan yg baru, dan inget 
+            ada aku juga sayang, kamu bebas cerita apa aja yang kamu mau.
+        </p>
+
+        <p>
+            Makasi udah hadir dan jadi bagian dari hidup aku sayang
+        </p>
+
+        <button onclick="showSecret()">
+            READ ONE LAST NOTE
+        </button>
+
+        <div class="secret" id="secret">
+            Reminder for u
+            Kalau suatu saat kamu buka dan baca ini lagi, ak harap kamu masi inget kalau ada seseorang yang seneng liat kamu bahagia yaitu aku, tata! wkwk
+
+            <br><br>
+
+            Thank u for being a part of my life sayang
+
+            <br><br>
+
+            I love you more than anything, more than anyone. ♡
+        </div>
+
+    </div>
+
+    <button onclick="restart()">
+        START AGAIN 
+    </button>
+
+    <div class="footer">
+        Yayyyy Selesaii!!
+    </div>
+
+</section>
+
+
+<script>
+
+// PAGE NAVIGATION
+
+function goToPage(number) {
+
+    document.querySelectorAll(".screen").forEach(page => {
+        page.classList.remove("active");
+    });
+
+    document.getElementById("page" + number).classList.add("active");
+
+    window.scrollTo(0, 0);
+
+    if (number === 2) {
+        typeLetter();
+    }
+
+    if (number === 4) {
+        makeConfetti();
+    }
+}
+
+
+// OPEN ENVELOPE + PLAY MUSIC
+
+function openLetter() {
+
+    const music = document.getElementById("bgMusic");
+
+    music.volume = 0.35;
+
+    music.play().then(() => {
+        updateMusicButton();
+    }).catch(() => {
+        console.log("Music could not autoplay.");
+    });
+
+    goToPage(2);
+}
+
+
+// MUSIC CONTROL
+
+function toggleMusic() {
+
+    const music = document.getElementById("bgMusic");
+
+    if (music.paused) {
+        music.play().then(updateMusicButton).catch(() => {
+            alert("Please check your music file.");
+        });
+    } else {
+        music.pause();
+        updateMusicButton();
+    }
+
+}
+
+function updateMusicButton() {
+
+    const music = document.getElementById("bgMusic");
+    const button = document.getElementById("musicBtn");
+
+    if (music.paused) {
+        button.innerHTML = "♫ MUSIC OFF";
+        button.classList.remove("playing");
+    } else {
+        button.innerHTML = "♫ MUSIC ON";
+        button.classList.add("playing");
+    }
+
+}
+
+
+// LETTER TYPING
+
+const letter =
+'happy birthday to u sayang semoga diumur kamu yang sekarang, tambah banyak hal baik yang dateng ke hidup kamu sayang, semoga apapun yang lagi kamu usahain bisa tercapai, semua doa baikmu satu persatu dikabulkan.Aku pengen kamu selalu punya alasan buat senyum, dan diantara banyaaaak hal yang bisa aku syukuri, kenal sama kamu adalah salah satunya. Oiya, sayang jangan kebanyakan ngevape yaa, inget sama kesehatan kamu, jangan sering-sering!.Aku harap kamu suka sama apa yang aku bikin, walaupun emang gaada apa-apanyaa wkwk. And One last thing, aku mungkin gabisa slalu bikin hari kamu sempurna, but i hope i can be part of your happy moments:> Thank u for being u, ka ell.Im really glad to know u. Sama aku terus yaa, love u sayangku ♡';
+
+let startedTyping = false;
+
+function typeLetter() {
+
+    if (startedTyping) return;
+
+    startedTyping = true;
+
+    let i = 0;
+
+    const target = document.getElementById("letterText");
+
+    function write() {
+
+        if (i < letter.length) {
+
+            target.textContent += letter.charAt(i);
+
+            i++;
+
+            setTimeout(write, 35);
+
+        }
+
+    }
+
+    write();
+
+}
+
+
+// BLOW CANDLES
+
+let blown = false;
+
+function blowCandles() {
+
+    if (blown) return;
+
+    blown = true;
+
+    document.querySelectorAll(".flame").forEach(flame => {
+        flame.classList.add("off");
+    });
+
+    document.getElementById("wishText").textContent =
+        "May your wish find its way to you. ♡";
+
+    document.getElementById("blowBtn").textContent =
+        "SEE YOUR LAST SURPRISE →";
+
+    makeConfetti();
+
+    document.getElementById("blowBtn").onclick = function() {
+        goToPage(4);
+    };
+
+}
+
+
+// CONFETTI
+
+function makeConfetti() {
+
+    const symbols = ["✦", "·", "♡", "✧"];
+
+    for (let i = 0; i < 35; i++) {
+
+        const item = document.createElement("span");
+
+        item.className = "confetti";
+
+        item.textContent =
+            symbols[Math.floor(Math.random() * symbols.length)];
+
+        item.style.left = Math.random() * 100 + "vw";
+
+        item.style.color = "#ae9167";
+
+        item.style.fontSize =
+            (12 + Math.random() * 12) + "px";
+
+        item.style.animationDuration =
+            (3 + Math.random() * 3) + "s";
+
+        document.body.appendChild(item);
+
+        setTimeout(() => item.remove(), 7000);
+
+    }
+
+}
+
+
+// SECRET MESSAGE
+
+function showSecret() {
+
+    document.getElementById("secret").style.display = "block";
+
+    makeConfetti();
+
+}
+
+
+// RESTART
+
+function restart() {
+
+    startedTyping = false;
+    blown = false;
+
+    document.getElementById("letterText").textContent = "";
+
+    document.getElementById("candles").innerHTML =
+        '<span class="flame">🕯️</span>' +
+        '<span class="flame">🕯️</span>' +
+        '<span class="flame">🕯️</span>';
+
+    document.getElementById("wishText").textContent =
+        "Close your eyes and make a wish.";
+
+    document.getElementById("blowBtn").textContent =
+        "BLOW THE CANDLES";
+
+    document.getElementById("blowBtn").onclick = blowCandles;
+
+    document.getElementById("secret").style.display = "none";
+
+    goToPage(1);
+
+}
+
+</script>
+
+</body>
+</html>
